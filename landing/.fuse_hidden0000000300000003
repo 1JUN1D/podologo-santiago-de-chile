@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podólogo Medellín | Clínica Podológica Particular | Quiropedia</title>
+  <meta name="description" content="Podólogo en Medellín — clínica podológica particular, atención a domicilio, sin EPS. La Francia, Laureles, Norte, Envigado. Agenda por WhatsApp hoy. Quiropedia.">
+  <link rel="stylesheet" href="landing.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Q4RPJMZGD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7Q4RPJMZGD');
+    gtag('config', 'AW-18125589998');
+  </script>
+
+  <style>
+    /* Zone pills */
+    .zones-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+    .zone-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 1.5px solid var(--teal-mid);
+      color: var(--teal-dark);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+    }
+    .zone-pill:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+    .zone-pill svg { flex-shrink: 0; }
+
+    /* Services list */
+    .services-compact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    @media(max-width:600px){ .services-compact { grid-template-columns: 1fr; } }
+
+    .service-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      transition: var(--transition);
+    }
+    .service-pill:hover {
+      border-color: var(--teal-mid);
+      box-shadow: var(--shadow-xs);
+      transform: translateX(4px);
+    }
+    .service-pill__icon {
+      width: 38px;
+      height: 38px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .service-pill__text strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+    .service-pill__text span {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* Pricing section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media(max-width: 900px){ .pricing-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width: 560px){ .pricing-grid { grid-template-columns: 1fr; } }
+
+    .price-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .price-card:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+    .price-card__badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    .price-card__badge--domicilio {
+      background: #FFF0E9;
+      color: var(--accent);
+    }
+    .price-card__icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .price-card__name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+    .price-card__desc {
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .price-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .price-card__price {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: var(--teal-deep);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .price-card__price small {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-family: var(--font-body);
+      font-weight: 400;
+      display: block;
+      margin-top: 2px;
+    }
+    .price-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #25D366;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .price-card__cta:hover {
+      background: #20b858;
+      transform: scale(1.03);
+    }
+    .pricing-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    .pricing-note a {
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+
+    /* Domicilio highlight */
+    .domicilio-card {
+      background: linear-gradient(135deg, var(--teal-deep), #004a55);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .domicilio-card::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,184,212,0.2), transparent 70%);
+    }
+    .domicilio-card h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .domicilio-card p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+    @media(max-width:760px){
+      .domicilio-card {
+        grid-template-columns: 1fr;
+        padding: 36px 28px;
+      }
+    }
+  </style>
+
+<link rel="shortcut icon" href="/assets/logo.webp" type="image/x-icon">
+
+
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="https://medellinpodologo.dondeseria.com/" class="nav__brand">
+        <div class="nav__logo-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          </svg>
+        </div>
+        <div>
+          Quiropedia
+          <span>Podólogo Medellín · Atención Particular</span>
+        </div>
+      </a>
+      <a href="https://wa.me/573161832897?text=Hola,%20busco%20un%20podólogo%20en%20Medellín%20para%20agendar%20cita"
+         class="nav__cta"
+         onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span>Agendar cita</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ══════════════════════════ -->
+<section class="hero">
+  <div class="hero__left">
+    <div class="urgency-badge">
+      <span class="urgency-dot"></span>
+      Atención particular · Sin EPS · La Francia · Laureles · Norte · Envigado
+    </div>
+    <p class="hero__eyebrow">Tu podólogo de confianza en Medellín</p>
+    <h1 class="hero__h1">
+      La mejor <em>clínica podológica</em><br>de Medellín — en tu barrio
+    </h1>
+    <p class="hero__sub">
+      Profesionales titulados que te atienden tanto en consultorio como en tu hogar. Servicio privado para toda Medellín: La Francia, Laureles, sector Norte y Envigado. Reserva tu turno para hoy mismo.
+    </p>
+    <div class="hero__actions">
+      <a href="https://wa.me/573161832897?text=Hola,%20quiero%20agendar%20una%20cita%20con%20podólogo%20en%20Medellín"
+         class="btn-wa"
+         onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Agendar cita hoy
+      </a>
+      <a href="#servicios" class="btn-outline">
+        Ver servicios
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero__trust">
+      <div class="hero__trust-badge">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+        Médico podólogo
+      </div>
+      <div class="hero__trust-badge">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+        A domicilio
+      </div>
+      <div class="hero__trust-badge">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+        Misma semana
+      </div>
+    </div>
+    <!-- Zonas -->
+    <div class="zones-grid">
+      <span class="zone-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        La Francia
+      </span>
+      <span class="zone-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        Laureles
+      </span>
+      <span class="zone-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        Norte
+      </span>
+      <span class="zone-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        Envigado
+      </span>
+      <span class="zone-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        A domicilio
+      </span>
+    </div>
+  </div>
+  <div class="hero__right">
+    <div class="hero__video-wrap" id="videoWrap1">
+      <!-- ✏️ REEMPLAZA la ruta del video aquí: cambia /assets/Video1.mp4 por la ruta real de tu video -->
+      <video id="heroVideo1" autoplay muted loop playsinline
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;"
+             oncanplay="document.getElementById('videoOverlay1').style.opacity='0'"
+             onerror="document.getElementById('videoOverlay1').style.opacity='1'">
+        <source src="/assets/Video1.mp4" type="video/mp4">
+      </video>
+      <!-- Poster visible siempre hasta que el video cargue -->
+      <div id="videoOverlay1" style="
+        position:absolute;inset:0;z-index:2;
+        background-image:url('/assets/portada1.webp');
+        background-size:cover;background-position:center;
+        display:flex;align-items:center;justify-content:center;
+        transition:opacity 0.6s ease;
+      ">
+        <div style="
+          width:72px;height:72px;border-radius:50%;
+          background:rgba(0,184,212,0.9);
+          display:flex;align-items:center;justify-content:center;
+          box-shadow:0 8px 32px rgba(0,0,0,0.3);
+          cursor:pointer;transition:transform 0.2s;
+        " onclick="playHeroVideo('heroVideo1','videoOverlay1')"
+           onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-left:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-strip__inner">
+      <div class="stat-item">
+        <div class="stat-item__num">3.6K</div>
+        <div class="stat-item__label">Búsquedas mensuales</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__num">+5</div>
+        <div class="stat-item__label">Zonas de cobertura</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__num">0</div>
+        <div class="stat-item__label">Trámites de EPS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__num">1ª</div>
+        <div class="stat-item__label">Consulta orientativa</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SERVICIOS ══════════════════════════ -->
+<section class="section bg-white" id="servicios">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-eyebrow">Podología en Medellín</span>
+      <h2 class="section-h2">Todo lo que un <em>podólogo en Medellín</em> puede hacer por ti</h2>
+      <p class="section-lead">Cubrimos desde la higiene básica del pie hasta intervenciones de mayor complejidad, con atención disponible en consultorio y a domicilio en cualquier zona de Medellín.</p>
+    </div>
+    <div class="services-compact">
+      <div class="service-pill">
+        <div class="service-pill__icon">🦶</div>
+        <div class="service-pill__text">
+          <strong>Podología general</strong>
+          <span>Cuidado, corte y limpieza profesional</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">✂️</div>
+        <div class="service-pill__text">
+          <strong>Uñas encarnadas</strong>
+          <span>Tratamiento y cirugía especializada</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">🔬</div>
+        <div class="service-pill__text">
+          <strong>Hongos en uñas</strong>
+          <span>Diagnóstico y tratamiento antifúngico</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">💉</div>
+        <div class="service-pill__text">
+          <strong>Pie diabético</strong>
+          <span>Cuidado especializado y preventivo</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">🩺</div>
+        <div class="service-pill__text">
+          <strong>Callos y durezas</strong>
+          <span>Extracción y tratamiento de fondo</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">🏠</div>
+        <div class="service-pill__text">
+          <strong>Podología a domicilio</strong>
+          <span>En tu casa, por toda Medellín</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">⚡</div>
+        <div class="service-pill__text">
+          <strong>Verruga plantar</strong>
+          <span>Tratamiento con técnica especializada</span>
+        </div>
+      </div>
+      <div class="service-pill">
+        <div class="service-pill__icon">👶</div>
+        <div class="service-pill__text">
+          <strong>Podología pediátrica</strong>
+          <span>Atención especializada en niños</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ TARIFAS ════════════════════════════ -->
+<section class="section bg-light" id="tarifas">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-eyebrow">Tarifas transparentes</span>
+      <h2 class="section-h2">Nuestros servicios <em>con precio claro</em></h2>
+      <p class="section-lead">Cero costos extras y total claridad. Antes de reservar, sabrás con detalle qué incluye cada intervención y cuál es su valor.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- 1. Quiropedia -->
+      <div class="price-card">
+        <span class="price-card__badge">En clínica</span>
+        <div class="price-card__icon">🦶</div>
+        <div class="price-card__name">Quiropedia</div>
+        <div class="price-card__desc">Atención podológica integral: corte y limado correctivo de uñas, retiro de callosidades, hidratación y masaje final.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price">$162.500<small>por sesión</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20quiero%20agendar%20una%20Quiropedia%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Onicocriptosis 1 lateral -->
+      <div class="price-card">
+        <span class="price-card__badge">Uña encarnada</span>
+        <div class="price-card__icon">✂️</div>
+        <div class="price-card__name">Onicocriptosis<br>1 lateral</div>
+        <div class="price-card__desc">Procedimiento clínico para tratar la uña encarnada en un lateral, con anestesia local, corte profundo y cobertura cicatrizante.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price">$200.000<small>por lateral</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20tratamiento%20de%20Onicocriptosis%20(1%20lateral)%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Onicocriptosis 2 laterales -->
+      <div class="price-card">
+        <span class="price-card__badge">Uña encarnada</span>
+        <div class="price-card__icon">✂️</div>
+        <div class="price-card__name">Onicocriptosis<br>2 laterales</div>
+        <div class="price-card__desc">Tratamiento de uña encarnada en ambos laterales del dedo, con anestesia local y curación con apósitos especializados.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price">$225.000<small>ambos laterales</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20tratamiento%20de%20Onicocriptosis%20(2%20laterales)%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Onicotomía -->
+      <div class="price-card">
+        <span class="price-card__badge">Cirugía ungueal</span>
+        <div class="price-card__icon">💉</div>
+        <div class="price-card__name">Onicotomía</div>
+        <div class="price-card__desc">Extracción parcial o total de la lámina ungueal cuando la uña presenta daño severo o no es viable conservarla.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price">$250.000<small>por uña</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20una%20Onicotomía%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Onicotomía X2 -->
+      <div class="price-card">
+        <span class="price-card__badge">Cirugía ungueal</span>
+        <div class="price-card__icon">💉</div>
+        <div class="price-card__name">Onicotomía X2</div>
+        <div class="price-card__desc">Extracción de la lámina ungueal aplicada en dos uñas durante la misma sesión clínica.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price">$300.000<small>dos uñas</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20una%20Onicotomía%20X2%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Evaluación y Diagnóstico -->
+      <div class="price-card">
+        <span class="price-card__badge">Valoración</span>
+        <div class="price-card__icon">🩺</div>
+        <div class="price-card__name">Evaluación y Diagnóstico</div>
+        <div class="price-card__desc">Examen clínico completo del pie para identificar patologías, definir un plan terapéutico y orientarte en el cuidado adecuado.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20quiero%20agendar%20una%20Evaluación%20y%20Diagnóstico%20podológico%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 7. Quiropedia Preventiva -->
+      <div class="price-card">
+        <span class="price-card__badge">Prevención</span>
+        <div class="price-card__icon">🌿</div>
+        <div class="price-card__name">Quiropedia Preventiva</div>
+        <div class="price-card__desc">Sesión enfocada en mantener la salud del pie, evitar callosidades, lesiones y problemas en las uñas antes de que aparezcan.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20quiero%20información%20sobre%20Quiropedia%20Preventiva%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 8. Pie Diabético -->
+      <div class="price-card">
+        <span class="price-card__badge">Especializado</span>
+        <div class="price-card__icon">🩺</div>
+        <div class="price-card__name">Pie Diabético</div>
+        <div class="price-card__desc">Atención específica para pacientes con diabetes, con protocolo de bioseguridad reforzado y vigilancia de heridas y sensibilidad.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20busco%20atención%20de%20Pie%20Diabético%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 9. Callosidades / Durezas -->
+      <div class="price-card">
+        <span class="price-card__badge">Tratamiento</span>
+        <div class="price-card__icon">🦶</div>
+        <div class="price-card__name">Callosidades / Durezas</div>
+        <div class="price-card__desc">Retiro profesional de durezas y callosidades en zona plantar, con tratamiento de fondo para prevenir su reaparición.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20tratamiento%20de%20Callosidades%20y%20Durezas%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 10. Onicofosis (Hongos) -->
+      <div class="price-card">
+        <span class="price-card__badge">Tratamiento</span>
+        <div class="price-card__icon">🔬</div>
+        <div class="price-card__name">Onicofosis (Hongos)</div>
+        <div class="price-card__desc">Manejo clínico de uñas afectadas por hongos: limado profundo, aplicación de queratolítico y plan antimicótico personalizado.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20tratamiento%20para%20Onicofosis%20(Hongos)%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 11. Pie de Atleta -->
+      <div class="price-card">
+        <span class="price-card__badge">Tratamiento</span>
+        <div class="price-card__icon">🌿</div>
+        <div class="price-card__name">Pie de Atleta</div>
+        <div class="price-card__desc">Tratamiento de la micosis interdigital con limpieza profunda, productos antifúngicos y recomendaciones para evitar recaídas.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20tratamiento%20de%20Pie%20de%20Atleta%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 12. Clavos (Helomas) -->
+      <div class="price-card">
+        <span class="price-card__badge">Tratamiento</span>
+        <div class="price-card__icon">🦶</div>
+        <div class="price-card__name">Clavos (Helomas)</div>
+        <div class="price-card__desc">Eliminación clínica de helomas o clavos plantares, con análisis de causas biomecánicas y recomendaciones de descarga.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20necesito%20tratamiento%20de%20Clavos%20(Helomas)%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 13. Ortonixia -->
+      <div class="price-card">
+        <span class="price-card__badge">Correctivo</span>
+        <div class="price-card__icon">✂️</div>
+        <div class="price-card__name">Ortonixia</div>
+        <div class="price-card__desc">Reeducación de la curvatura ungueal mediante el uso de bracket o alambre correctivo para tratar uñas encarnadas o deformes.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20quiero%20información%20sobre%20Ortonixia%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+      <!-- 14. Especialidad Adulto Mayor -->
+      <div class="price-card">
+        <span class="price-card__badge">Especializado</span>
+        <div class="price-card__icon">🦶</div>
+        <div class="price-card__name">Especialidad Adulto Mayor</div>
+        <div class="price-card__desc">Cuidado podológico adaptado para adultos mayores, con técnicas suaves, protocolo cómodo y posibilidad de atención a domicilio.</div>
+        <div class="price-card__footer">
+          <div class="price-card__price"><span style="font-size:1rem;">Consultar valor</span><small>Agenda tu valoración</small></div>
+          <a href="https://wa.me/573161832897?text=Hola,%20busco%20podología%20para%20adulto%20mayor%20en%20Medellín" class="price-card__cta" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <p class="pricing-note">¿Tu situación requiere asesoría previa o tienes alguna particularidad? <a href="https://wa.me/573161832897?text=Hola,%20tengo%20una%20consulta%20sobre%20precios%20y%20servicios" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">Contáctanos por WhatsApp →</a></p>
+  </div>
+</section>
+
+<!-- ══════════════════════ DOMICILIO EXTRA ════════════════════ -->
+<section class="section-sm bg-light">
+  <div class="container">
+    <div class="domicilio-card">
+      <div>
+        <h3>¿Buscas podólogo<br>a domicilio en Medellín?</h3>
+        <p>Trasladamos toda la clínica al lugar que prefieras. Cubrimos La Francia, Laureles, sector Norte, Envigado y otras áreas de la ciudad, manteniendo idénticos protocolos de bioseguridad y la misma calidad profesional.</p>
+        <a href="https://wa.me/573161832897?text=Hola,%20necesito%20un%20podólogo%20a%20domicilio%20en%20Medellín"
+           class="btn-wa"
+           onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Consultar disponibilidad
+        </a>
+      </div>
+      <div style="text-align:center;font-size:5rem;opacity:0.6;position:relative;z-index:1;">🏠</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════ WHY US ══════════════════════════ -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="split split--reverse">
+      <div class="split__visual">
+        <img
+          src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80"
+          alt="Clínica podológica Medellín Quiropedia"
+          loading="lazy"
+        >
+      </div>
+      <div>
+        <div class="section-header">
+          <span class="section-eyebrow">Por qué elegir Quiropedia</span>
+          <h2 class="section-h2">Tu salud podal merece atención <em>de verdad</em></h2>
+          <p class="section-lead">No somos un recurso al que recurrir cuando la EPS falla. Somos la alternativa principal para quienes buscan un cuidado real y profesional de sus pies.</p>
+        </div>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Médico podólogo en Medellín</strong> — profesionales con titulación verificable y formación específica en patologías del pie, no operarios de pedicura cosmética.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Centros de podología en Medellín</strong> dotados con instrumental clínico, esterilización avalada y protocolos completos de bioseguridad.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Podólogo a domicilio en Medellín</strong> — desplazamos toda la consulta hasta tu residencia en zonas como La Francia, Laureles, El Poblado y Envigado.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p><strong>Clínica podológica Medellín sin EPS</strong> — atención el mismo día que reservas, sin gestiones, sin filas y sin demoras innecesarias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ TESTIMONIOS ════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-eyebrow">Pacientes reales</span>
+      <h2 class="section-h2">Paisas que <em>ya confían</em> en Quiropedia</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <blockquote>Encontré a Quiropedia buscando podólogo en Medellín La Francia y fue una decisión acertadísima. Puntualidad, higiene impecable y un trato profesional para mis callosidades.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JV</div>
+          <div>
+            <div class="testimonial-author-name">Jorge V.</div>
+            <div class="testimonial-author-meta">La Francia · Podología general</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <blockquote>Pedí el servicio a domicilio porque no podía moverme con facilidad. La podóloga llegó puntual y con todo el equipo esterilizado. La comodidad y la atención superaron mis expectativas.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MH</div>
+          <div>
+            <div class="testimonial-author-name">Martha H.</div>
+            <div class="testimonial-author-meta">Laureles · Podología a domicilio</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <blockquote>Llevaba meses sufriendo con hongos en las uñas. En dos sesiones cerca de Envigado obtuve un diagnóstico claro y un plan de tratamiento que sí funcionó. Hoy ya no lidio con el problema.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RP</div>
+          <div>
+            <div class="testimonial-author-name">Ricardo P.</div>
+            <div class="testimonial-author-meta">El Poblado · Tratamiento hongos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-eyebrow">Dudas frecuentes</span>
+      <h2 class="section-h2">Lo que más nos <em>preguntan</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Atienden en La Francia, Laureles y otras zonas de Medellín?
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </button>
+        <div class="faq-answer">Por supuesto. Atendemos en consultorio y también ofrecemos visita domiciliaria en distintos sectores de Medellín, entre ellos La Francia, Laureles, El Poblado, Envigado y otros barrios cercanos. Escríbenos por WhatsApp para validar la cobertura exacta en tu zona.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cuánto cuesta la consulta con el podólogo?
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </button>
+        <div class="faq-answer">El valor depende del servicio y del tipo de procedimiento que necesites. Cuéntanos tu caso por WhatsApp y te indicamos el precio exacto sin compromiso. La asesoría inicial no tiene costo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Necesito remisión médica para ser atendido?
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </button>
+        <div class="faq-answer">No es necesario. Al ser una consulta particular, agendas directamente sin remisiones, autorizaciones ni gestiones con tu EPS o caja de compensación.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Atienden pacientes diabéticos?
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </button>
+        <div class="faq-answer">Sí, manejamos un protocolo dedicado para pacientes con diabetes. El cuidado del pie diabético exige una atención preventiva y especializada que ofrecemos con la formación y el instrumental adecuados.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cuánto tiempo dura una consulta de podología?
+          <div class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </button>
+        <div class="faq-answer">Una consulta general suele durar entre 30 y 60 minutos según el tratamiento aplicado. Los procedimientos más específicos pueden tomar más tiempo y te lo informamos al momento de reservar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA BAND ══════════════════════════ -->
+<section class="cta-band">
+  <div class="container">
+    <h2 class="cta-band__h2">El mejor <em style="font-style:italic;color:var(--teal);">podólogo en Medellín</em><br>está a un mensaje de distancia</h2>
+    <p class="cta-band__sub">Sin filas, sin EPS y sin demoras. Cita disponible esta misma semana en La Francia, Laureles, El Poblado, Envigado y todo Medellín.</p>
+    <div class="cta-band__actions">
+      <a href="https://wa.me/573161832897?text=Hola,%20quiero%20agendar%20cita%20con%20podólogo%20en%20Medellín"
+         class="btn-wa"
+         onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Hablar con un podólogo ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MAPA ══════════════════════════════ -->
+<section class="map-section">
+  <div class="container">
+    <div class="section-header section-header--center" style="margin-bottom:40px;">
+      <span class="section-eyebrow">Encuéntranos</span>
+      <h2 class="section-h2">Quiropedia en <em>Medellín</em></h2>
+    </div>
+    <div class="map-grid">
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31729.73042401135!2d-75.552901!3d6.298989!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e44299e87bd4859%3A0xd5fd4131e48e5657!2sPODOLOGO%20MEDELLIN%20%7C%20DALIA%20OSORIO!5e0!3m2!1ses-419!2sco!4v1777685246667!5m2!1ses-419!2sco" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-info">
+        <h3>Centro de Podología<br><em style="font-style:italic;color:var(--teal-dark);">Quiropedia</em></h3>
+        <div class="map-detail">
+          <div class="map-detail__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="map-detail__text">
+            <p>Sede principal</p>
+            <strong>Carrera 46 #108a-04, Andalucía, La Francia<br>Medellín, Antioquia</strong>
+          </div>
+        </div>
+        <div class="map-detail">
+          <div class="map-detail__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="map-detail__text">
+            <p>Horario de atención</p>
+            <strong>Lunes a Sábado<br>Confirma horarios por WhatsApp</strong>
+          </div>
+        </div>
+        <div class="map-detail">
+          <div class="map-detail__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          </div>
+          <div class="map-detail__text">
+            <p>Reserva ya</p>
+            <strong><a href="https://wa.me/573161832897" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})" style="color:var(--teal-dark);">+57 316 183 2897</a></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════ FOOTER ══════════════════════════ -->
+<footer class="footer-lp">
+  <div class="container">
+    <div class="footer-lp__inner">
+      <div class="footer-lp__brand">
+        Quiropedia
+        <span>Centro de Podología · Medellín, Colombia</span>
+      </div>
+      <div class="footer-lp__links">
+        <a href="https://medellinpodologo.dondeseria.com/">Sitio principal</a>
+        <a href="landing-unas-encarnadas.html">Uñas Encarnadas</a>
+        <a href="https://wa.me/573161832897" onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-lp__bottom">
+      <p>© 2026 Quiropedia. Centro de Podología en Medellín. Todos los derechos están reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════ WHATSAPP FLOTANTE ════════════════════ -->
+<a href="https://wa.me/573161832897?text=Hola,%20busco%20podólogo%20en%20Medellín"
+   class="wa-float"
+   title="Hablar con un podólogo"
+   onclick="gtag('event','conversion',{'send_to':'AW-18125589998/csHlCI_5qtscEO6b-sJD'})">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.525 5.857L.057 23.858l6.168-1.45A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.742-.502-5.313-1.38l-.38-.22-3.662.862.878-3.572-.248-.394A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+  function playHeroVideo(videoId, overlayId) {
+    var v = document.getElementById(videoId);
+    var o = document.getElementById(overlayId);
+    if (v) {
+      v.play().then(function(){ o.style.opacity = '0'; setTimeout(function(){ o.style.pointerEvents='none'; }, 600); })
+       .catch(function(){ o.style.opacity = '1'; });
+    }
+  }
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
